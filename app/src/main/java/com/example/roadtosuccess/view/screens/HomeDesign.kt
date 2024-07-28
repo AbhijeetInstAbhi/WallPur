@@ -1,4 +1,4 @@
-package com.example.roadtosuccess
+package com.example.roadtosuccess.view.screens
 
 import android.widget.Toast
 import androidx.compose.foundation.Canvas
@@ -20,7 +20,6 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
-import androidx.compose.foundation.layout.wrapContentWidth
 import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.foundation.lazy.grid.GridCells
 import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
@@ -51,19 +50,17 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.constraintlayout.compose.ConstraintLayout
 import androidx.navigation.NavController
-import com.example.roadtosuccess.Navigation.Screen
-import com.example.roadtosuccess.ui.theme.AquaBlue
-import com.example.roadtosuccess.ui.theme.BlueViolet1
-import com.example.roadtosuccess.ui.theme.OrangeYellow2
-import com.example.roadtosuccess.ui.theme.OrangeYellow3
-import com.example.roadtosuccess.ui.theme.PurpleGrey40
-import com.example.roadtosuccess.ui.theme.TextWhite
-import com.example.roadtosuccess.ui.theme.colorPrimary
-import com.example.roadtosuccess.ui.theme.gray
-import com.example.roadtosuccess.ui.theme.skyblue1
-import com.example.roadtosuccess.ui.theme.skyblue2
-import com.example.roadtosuccess.ui.theme.skyblue3
-import com.example.roadtosuccess.ui.theme.white
+import com.example.roadtosuccess.util.BottomMenuContent
+import com.example.roadtosuccess.navigation.Screen
+import com.example.roadtosuccess.R
+import com.example.roadtosuccess.data.model.Course
+import com.example.roadtosuccess.util.standardQuadFromTo
+import com.example.roadtosuccess.view.theme.AquaBlue
+import com.example.roadtosuccess.view.theme.BlueViolet1
+import com.example.roadtosuccess.view.theme.OrangeYellow3
+import com.example.roadtosuccess.view.theme.TextWhite
+import com.example.roadtosuccess.view.theme.colorPrimary
+import com.example.roadtosuccess.view.theme.gray
 
 @ExperimentalFoundationApi
 @Composable
@@ -114,42 +111,42 @@ fun HomeDesign(navController: NavController) {
                         courses = listOf(
                             Course(
                                 title = "Nature",
-                                com.example.roadtosuccess.R.drawable.ic_headphone,
+                                R.drawable.ic_headphone,
                                 gray,
                                 gray,
                                 gray
                             ),
                             Course(
                                 title = "Graffiti",
-                                com.example.roadtosuccess.R.drawable.ic_videocam,
+                                R.drawable.ic_videocam,
                                 gray,
                                 gray,
                                 gray
                             ),
                             Course(
                                 title = "Street",
-                                com.example.roadtosuccess.R.drawable.ic_play,
+                                R.drawable.ic_play,
                                 gray,
                                 gray,
                                 gray
                             ),
                             Course(
                                 title = "Micro",
-                                com.example.roadtosuccess.R.drawable.ic_headphone,
+                                R.drawable.ic_headphone,
                                 gray,
                                 gray,
                                 gray
                             ),
                             Course(
                                 title = "Portrait",
-                                com.example.roadtosuccess.R.drawable.ic_play,
+                                R.drawable.ic_play,
                                 gray,
                                 gray,
                                 gray
                             ),
                             Course(
                                 title = "PSD Section",
-                                com.example.roadtosuccess.R.drawable.ic_videocam,
+                                R.drawable.ic_videocam,
                                 gray,
                                 gray,
                                 gray
@@ -161,10 +158,10 @@ fun HomeDesign(navController: NavController) {
         }
         BottomMenu(navController,
             items = listOf(
-                BottomMenuContent("Home", com.example.roadtosuccess.R.drawable.ic_home),
-                BottomMenuContent("Post", com.example.roadtosuccess.R.drawable.baseline_add_circle_24),
-                BottomMenuContent("Feed", com.example.roadtosuccess.R.drawable.baseline_add_link_24),
-                BottomMenuContent("Profile", com.example.roadtosuccess.R.drawable.ic_profile),
+                BottomMenuContent("Home", R.drawable.ic_home),
+                BottomMenuContent("Post", R.drawable.baseline_add_circle_24),
+                BottomMenuContent("Feed", R.drawable.baseline_add_link_24),
+                BottomMenuContent("Profile", R.drawable.ic_profile),
             ), modifier = Modifier.align(Alignment.BottomCenter)
         )
     }
@@ -222,7 +219,7 @@ fun GreetingSection(navController: NavController) {
                 .clickable {
                     navController.navigate(Screen.ProfileScreen.route)
                 },
-            painter = painterResource(com.example.roadtosuccess.R.drawable.ic_profile),
+            painter = painterResource(R.drawable.ic_profile),
             contentDescription = "Profile",
             contentScale = ContentScale.Crop
         )
@@ -241,7 +238,7 @@ fun GreetingSection(navController: NavController) {
             )
 
         }
-        Icon(painter = painterResource(id = com.example.roadtosuccess.R.drawable.ic_search), contentDescription = "Search",
+        Icon(painter = painterResource(id = R.drawable.ic_search), contentDescription = "Search",
             tint = Color.White,
             modifier = Modifier.size(24.dp)
         )
@@ -283,7 +280,7 @@ fun suggestionSection(
                 .padding(10.dp)
         ) {
             Icon(
-                painter = painterResource(id = com.example.roadtosuccess.R.drawable.ic_play),
+                painter = painterResource(id = R.drawable.ic_play),
                 contentDescription = "Play",
                 tint = Color.White,
                 modifier = Modifier.size(16.dp)

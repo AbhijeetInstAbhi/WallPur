@@ -1,18 +1,20 @@
-package com.example.roadtosuccess
+package com.example.roadtosuccess.view.screens
 
-import androidx.annotation.DrawableRes
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.layout.wrapContentHeight
 import androidx.compose.foundation.layout.wrapContentWidth
 import androidx.compose.foundation.lazy.grid.GridCells
 import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
@@ -22,6 +24,9 @@ import androidx.compose.foundation.shape.ZeroCornerSize
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.DisposableEffect
+import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
@@ -35,8 +40,12 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.constraintlayout.compose.ConstraintLayout
 import androidx.navigation.NavController
-import com.example.roadtosuccess.ui.theme.colorPrimary
-import com.example.roadtosuccess.ui.theme.white
+import coil.compose.AsyncImage
+import com.example.roadtosuccess.R
+import com.example.roadtosuccess.data.model.Photos
+import com.example.roadtosuccess.view.theme.colorPrimary
+import com.example.roadtosuccess.view.theme.white
+import com.example.roadtosuccess.viewmodel.MainViewModel
 
 @Composable
 fun ProfileScreen(navController: NavController){
@@ -79,19 +88,7 @@ fun ProfileScreen(navController: NavController){
                     }
 
             ){
-                ProfileGrid(photos = listOf(
-                    Photos(title = "Abhijeet", iconId = R.drawable.img1),
-                    Photos(title = "Abhijeet2", iconId = R.drawable.img2),
-                    Photos(title = "Abhijeet3", iconId = R.drawable.img3),
-                    Photos(title = "Abhijeet3", iconId = R.drawable.img4),
-                    Photos(title = "Abhijeet3", iconId = R.drawable.img5),
-                    Photos(title = "Abhijeet3", iconId = R.drawable.img6),
-                    Photos(title = "Abhijeet3", iconId = R.drawable.img7),
-                    Photos(title = "Abhijeet3", iconId = R.drawable.img8),
-                    Photos(title = "Abhijeet3", iconId = R.drawable.img9),
-                    Photos(title = "Abhijeet3", iconId = R.drawable.img10),
-                    Photos(title = "Abhijeet3", iconId = R.drawable.img11),
-                    ))
+                ProfileGrid(viewModel = MainViewModel())
             }
         }
     }
@@ -119,7 +116,7 @@ fun ProfileSection(){
                 .size(150.dp)
                 .border(1.dp, Color.White, CircleShape)
                 .clip(CircleShape),
-            painter = painterResource(com.example.roadtosuccess.R.drawable.ic_profile),
+            painter = painterResource(R.drawable.ic_profile),
             contentDescription = "Profile",
             contentScale = ContentScale.FillWidth,
         )
@@ -142,7 +139,13 @@ fun ProfileSection(){
    }
 
 @Composable
-fun ProfileGrid(photos: List<Photos>){
+fun ProfileGrid(viewModel: MainViewModel){
+    val photos by viewModel.imagelist
+
+    LaunchedEffect(Unit) {
+        viewModel.getPosts()
+    }
+
     LazyVerticalGrid(
         columns = GridCells.Fixed(3),
         contentPadding = PaddingValues(start = 7.5.dp, end = 7.5.dp, bottom = 100.dp),
@@ -150,23 +153,23 @@ fun ProfileGrid(photos: List<Photos>){
     ) {
         items(photos.size) {
             Column(horizontalAlignment = Alignment.CenterHorizontally) {
-                Image(
-                    painter = painterResource(id = photos[it].iconId),
-                    contentDescription = "login_bg",
+                AsyncImage(
+                    model = photos[it].base64,
+                    contentScale = ContentScale.Crop,
+                    contentDescription = null,
                     modifier = Modifier
-                        .border(1.dp, Color.White, RoundedCornerShape(10))
-                        .clip(RoundedCornerShape(10))
-                        .wrapContentWidth(),
+                        .fillMaxWidth()
+                        .clickable {
+
+                        }
+                        .wrapContentHeight()
                 )
             }
         }
     }
 }
 
-data class Photos(
-    val title: String,
-    @DrawableRes val iconId: Int,
-)
+
 
 
 

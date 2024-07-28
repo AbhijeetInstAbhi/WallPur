@@ -1,4 +1,4 @@
-package com.example.roadtosuccess.ui.theme
+package com.example.roadtosuccess.view.theme
 
 import androidx.compose.material3.Typography
 import androidx.compose.ui.text.TextStyle

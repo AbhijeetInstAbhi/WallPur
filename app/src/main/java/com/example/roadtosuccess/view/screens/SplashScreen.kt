@@ -1,4 +1,4 @@
-package com.example.roadtosuccess
+package com.example.roadtosuccess.view.screens
 
 import android.view.animation.OvershootInterpolator
 import androidx.compose.animation.core.Animatable
@@ -6,12 +6,9 @@ import androidx.compose.animation.core.tween
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
-import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.R
-import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.shape.CircleShape
@@ -31,12 +28,11 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
-import com.example.roadtosuccess.Navigation.Screen
-import com.example.roadtosuccess.ui.theme.Typography
-import com.example.roadtosuccess.ui.theme.colorPrimary
-import com.example.roadtosuccess.ui.theme.white
+import com.example.roadtosuccess.navigation.Screen
+import com.example.roadtosuccess.view.theme.Typography
+import com.example.roadtosuccess.view.theme.colorPrimary
+import com.example.roadtosuccess.view.theme.white
 import kotlinx.coroutines.delay
-import java.lang.reflect.Type
 
 @Composable
 fun SplashScreen(navController: NavController) {

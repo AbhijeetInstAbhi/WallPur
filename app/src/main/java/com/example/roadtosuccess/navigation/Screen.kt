@@ -1,4 +1,4 @@
-package com.example.roadtosuccess.Navigation
+package com.example.roadtosuccess.navigation
 
 sealed class Screen(val route: String) {
     object SplashScreen : Screen("splash_screen")

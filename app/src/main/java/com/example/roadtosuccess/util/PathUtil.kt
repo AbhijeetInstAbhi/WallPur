@@ -1,4 +1,4 @@
-package com.example.roadtosuccess
+package com.example.roadtosuccess.util
 
 import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.graphics.Path

@@ -1,14 +1,14 @@
-package com.example.roadtosuccess.Navigation
+package com.example.roadtosuccess.navigation
 
 import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.runtime.Composable
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
-import com.example.roadtosuccess.HomeDesign
-import com.example.roadtosuccess.LoginScreen
-import com.example.roadtosuccess.ProfileScreen
-import com.example.roadtosuccess.SplashScreen
+import com.example.roadtosuccess.view.screens.HomeDesign
+import com.example.roadtosuccess.view.screens.LoginScreen
+import com.example.roadtosuccess.view.screens.ProfileScreen
+import com.example.roadtosuccess.view.screens.SplashScreen
 
 @OptIn(ExperimentalFoundationApi::class)
 @Composable
